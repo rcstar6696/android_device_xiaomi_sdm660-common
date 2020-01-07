@@ -31,9 +31,9 @@
     <integer name="def_screen_off_timeout">30000</integer>
 
     <!-- Disable UI touch sounds by default -->
-    <bool name="def_sound_effects_enabled">false</bool>
+    <bool name="def_sound_effects_enabled">true</bool>
 
     <!-- Disable UI touch haptic feedback by default -->
-    <bool name="def_haptic_feedback">false</bool>
+    <bool name="def_haptic_feedback">true</bool>
 
 </resources>
