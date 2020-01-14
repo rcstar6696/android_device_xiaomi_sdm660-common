@@ -232,11 +232,12 @@ PRODUCT_BOOT_JARS += \
 # IMS
 PRODUCT_PACKAGES += \
     ims-ext-common_system \
-    ims_ext_common.xml \
+    telephony-ext
 
 # IMS JAR
 PRODUCT_BOOT_JARS += \
-    ims-ext-common_system
+    ims-ext-common_system \
+    telephony-ext
 
 # Init
 PRODUCT_PACKAGES += \
@@ -524,3 +525,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
+# Device-specific Settings
+PRODUCT_PACKAGES += \
+    XiaomiParts
