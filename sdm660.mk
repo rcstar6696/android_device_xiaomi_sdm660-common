@@ -511,3 +511,7 @@ PRODUCT_BOOT_JARS += \
 # Wallpapers
 PRODUCT_PACKAGES += \
     PixelLiveWallpaperPrebuilt
+
+# Device-specific settings
+PRODUCT_PACKAGES += \
+    XiaomiParts
