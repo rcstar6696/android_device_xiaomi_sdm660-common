@@ -137,6 +137,11 @@ PRODUCT_PACKAGES += \
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk )
 
+# Desktop Mode
+PRODUCT_PACKAGES += \
+    Taskbar \
+    TaskbarSupport
+
 # Display
 PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0 \
