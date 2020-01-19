@@ -26,7 +26,7 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 LINEAGE_ROOT="$MY_DIR"/../../..
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
+HELPER="$LINEAGE_ROOT"/vendor/carbon/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -36,11 +36,15 @@ fi
 # Default to sanitizing the vendor folder before extraction
 clean_vendor=true
 ONLY_COMMON=
+ONLY_DEVICE=
 
 while [ "${#}" -gt 0 ]; do
     case "${1}" in
         -o | --only-common )
                 ONLY_COMMON=false
+                ;;
+        -d | --only-device )
+                ONLY_DEVICE=false
                 ;;
         -n | --no-cleanup )
             CLEAN_VENDOR=false
@@ -51,6 +55,7 @@ while [ "${#}" -gt 0 ]; do
         -s | --section )
                 SECTION="${2}"; shift
                 clean_vendor=false
+                CLEAN_VENDOR=false
                 ;;
         * )
                 SRC="${1}"
@@ -76,7 +81,6 @@ function blob_fixup() {
         ;;
 
     vendor/lib/hw/camera.sdm660.so)
-        patchelf --replace-needed libMiWatermark.so libMiWatermark_shim.so "${2}"
         patchelf --add-needed camera.sdm660_shim.so "${2}"
         ;;
 
@@ -93,8 +97,10 @@ function blob_fixup() {
 # Initialize the common helper
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true $clean_vendor
 
+if [ -z "${ONLY_DEVICE}" ] && [ -s "${MY_DIR}/proprietary-files.txt" ]; then
 extract "$MY_DIR"/proprietary-files.txt "$SRC" \
     "${KANG}" --section "${SECTION}"
+fi
 
 if [ -z "${ONLY_COMMON}" ] && [ -s "${MY_DIR}/../${DEVICE}/proprietary-files.txt" ]; then
     # Reinitialize the helper for device
