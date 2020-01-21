@@ -446,19 +446,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.lineage.livedisplay</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>IDisplayModes</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IPictureAdjustment</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>vendor.lineage.power</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -614,7 +601,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <name>IGPAppConnector</name>
             <instance>default</instance>
         </interface>
-    </hal>    
+    </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.am</name>
         <transport>hwbinder</transport>
