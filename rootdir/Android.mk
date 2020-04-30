@@ -99,6 +99,8 @@ ifneq ($(filter lavender,$(TARGET_DEVICE)),)
 LOCAL_SRC_FILES    := etc/fstab_A.qcom
 else ifeq ($(AB_OTA_UPDATER), true)
 LOCAL_SRC_FILES    := etc/fstab_AB.qcom
+else ifeq ($(AONLY_FILEENCRYPTION), true)
+LOCAL_SRC_FILES    := etc/fstab_ENC.qcom
 else
 LOCAL_SRC_FILES    := etc/fstab.qcom
 endif
